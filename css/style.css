@@ -1,0 +1,15 @@
+body {
+    background-color: #353736;
+}
+
+p {
+    color: #ffffff;
+    font-family: monospace;
+    font-size: 20px;
+}
+
+video {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ffffff;
+}
