@@ -16,7 +16,10 @@ function run_game() {
     const intervalID = setInterval(function() {
         if (timeLeft > 0 && !gameOver) {
             timeLeft--;
-            timerText.textContent = `Time left: ${timeLeft} seconds`;
+            if (timeLeft == 1) {
+                timerText.textContent = `Time left: ${timeLeft} second`;
+            }
+            else timerText.textContent = `Time left: ${timeLeft} seconds`;
         }
         else if (!gameOver) {
             if (score < 10) {

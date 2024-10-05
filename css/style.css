@@ -7,7 +7,7 @@ p {
     color: #ffffff;
     font-family: monospace;
     font-size: 30px;
-    font-weight: bolder;
+    font-weight: bold;
 }
 
 .target {
@@ -27,6 +27,9 @@ p {
     background-color: #534e4e;
     border: 2px solid grey;
     border-radius: 8px;
+}
+
+.container span {
     font-family: monospace;
     font-size: 30px;
     font-weight: bolder;
