@@ -1,1 +1,1 @@
-To access the website visit https://cryptic4life.github.io/Website/.
+To access the website visit https://cryptic4life.github.io/TargetPractice/.
