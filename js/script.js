@@ -1,26 +1,58 @@
-function show_image(src, width, score) {
-    let h1 = document.createElement("h1");
-    h1.textContent = "Score = " + score;
-    h1.textContent = "Score = " + score;
+function run_game() {
+
+    gameOver = false;
+
+    // Score
+    let scoreText = document.createElement("p");
+    scoreText.innerHTML = "Score = ";
+    let scoreSpan = document.createElement("span");
+    scoreSpan.id = "score";
+    scoreSpan.textContent = 0;
+    scoreText.appendChild(scoreSpan);
+    document.body.appendChild(scoreText);
+    
+    // Timer
+    let timerText = document.createElement("p");
+    timerText.innerHTML = "Time left = ";
+    let timerSpan = document.createElement("span");
+    timerSpan.textContent = 5;
+    setInterval(function() {
+        if (timerSpan.textContent > 0 && !gameOver) {
+            timerSpan.textContent--;
+        }
+        else if (!gameOver) {
+            if (scoreSpan.textContent < 10) {
+                alert("Game over. Refresh the page to try again.");
+            }
+            else {
+                alert("Congratulations! You won!!");
+            }
+            gameOver = true;
+            div.onclick = null;
+        }
+    }, 1000);
+    timerText.appendChild(timerSpan);
+    timerText.appendChild(document.createTextNode(" seconds"));
+    document.body.appendChild(timerText);
+
+    // Target div
     let div = document.createElement("div");
     div.style.position = "absolute";
     div.style.left = Math.floor(Math.random() * (0.8*window.innerWidth - 50) + 50) + "px";
     div.style.top = Math.floor(Math.random() * (0.8*window.innerHeight - 50) + 50) + "px";
-    div.onclick = function() { show_image("svgs/target.svg", width, score + 1); div.remove(); h1.remove(); };
+    div.onclick = function() { 
+        div.style.left = Math.floor(Math.random() * (0.8*window.innerWidth - 50) + 50) + "px";
+        div.style.top = Math.floor(Math.random() * (0.8*window.innerHeight - 50) + 50) + "px";
+        scoreSpan.textContent++;
+    };
+
+    // Target image
     let img = document.createElement("img");
-    img.src = src;
-    img.width = width;
+    img.src = "svgs/target.svg";
+    img.width = 50;
     div.appendChild(img);
     document.body.appendChild(div);
-    document.body.appendChild(h1);
+    
 }
 
-function show_score(score) {
-    let div = document.createElement("div");
-    let h1 = document.createElement("h1");
-    h1.textContent = "Score = " + score;
-    div.appendChild(h1);
-    document.body.appendChild(div);
-}
-
-show_image("svgs/target.svg", "50", 0);
+run_game();
