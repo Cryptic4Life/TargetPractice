@@ -3,13 +3,16 @@ function run_game() {
     gameOver = false;
 
     // Score
-    let container = document.createElement("div");
-    container.className = "container";
+    let scoreContainer = document.createElement("div");
+    scoreContainer.className = "container";
     let score = 0;
     let scoreText = document.createElement("span");
     scoreText.textContent = `Score: ${score}`;
+    scoreContainer.appendChild(scoreText);
     
     // Timer
+    let timerContainer = document.createElement("div");
+    timerContainer.className = "container";
     let timerText = document.createElement("span");
     let timeLeft = 5;
     timerText.textContent = `Time left: ${timeLeft} seconds`;
@@ -33,9 +36,10 @@ function run_game() {
             div.onclick = null;
         }
     }, 1000);
-    container.appendChild(scoreText);
-    container.appendChild(timerText);
-    document.body.appendChild(container);
+    
+    timerContainer.appendChild(timerText);
+    document.body.appendChild(scoreContainer);
+    document.body.appendChild(timerContainer);
 
     // Target div
     let div = document.createElement("div");

@@ -20,13 +20,15 @@ p {
 
 .container {
     display: flex;
-    justify-content: space-between;
+    flex: 1;
+    justify-content: space-around;
     align-items: center;
     margin: 20px;
     padding: 10px;
     background-color: #534e4e;
     border: 2px solid grey;
     border-radius: 8px;
+    width: 20%;
 }
 
 .container span {
