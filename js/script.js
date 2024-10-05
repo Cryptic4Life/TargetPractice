@@ -3,47 +3,48 @@ function run_game() {
     gameOver = false;
 
     // Score
-    let scoreText = document.createElement("p");
-    scoreText.innerHTML = "Score = ";
-    let scoreSpan = document.createElement("span");
-    scoreSpan.id = "score";
-    scoreSpan.textContent = 0;
-    scoreText.appendChild(scoreSpan);
-    document.body.appendChild(scoreText);
+    let container = document.createElement("div");
+    container.className = "container";
+    let score = 0;
+    let scoreText = document.createElement("span");
+    scoreText.textContent = `Score: ${score}`;
     
     // Timer
-    let timerText = document.createElement("p");
-    timerText.innerHTML = "Time left = ";
-    let timerSpan = document.createElement("span");
-    timerSpan.textContent = 5;
-    setInterval(function() {
-        if (timerSpan.textContent > 0 && !gameOver) {
-            timerSpan.textContent--;
+    let timerText = document.createElement("span");
+    let timeLeft = 5;
+    timerText.textContent = `Time left: ${timeLeft} seconds`;
+    const intervalID = setInterval(function() {
+        if (timeLeft > 0 && !gameOver) {
+            timeLeft--;
+            timerText.textContent = `Time left: ${timeLeft} seconds`;
         }
         else if (!gameOver) {
-            if (scoreSpan.textContent < 10) {
-                alert("Game over. Refresh the page to try again.");
+            if (score < 10) {
+                alert("Game over :(\nRefresh the page to try again.");
             }
             else {
-                alert("Congratulations! You won!!");
+                alert("Congratulations!\nYou won!!");
             }
+            clearInterval(intervalID);
             gameOver = true;
             div.onclick = null;
         }
     }, 1000);
-    timerText.appendChild(timerSpan);
-    timerText.appendChild(document.createTextNode(" seconds"));
-    document.body.appendChild(timerText);
+    container.appendChild(scoreText);
+    container.appendChild(timerText);
+    document.body.appendChild(container);
 
     // Target div
     let div = document.createElement("div");
+    div.className = "target";
     div.style.position = "absolute";
     div.style.left = Math.floor(Math.random() * (0.8*window.innerWidth - 50) + 50) + "px";
     div.style.top = Math.floor(Math.random() * (0.8*window.innerHeight - 50) + 50) + "px";
     div.onclick = function() { 
         div.style.left = Math.floor(Math.random() * (0.8*window.innerWidth - 50) + 50) + "px";
         div.style.top = Math.floor(Math.random() * (0.8*window.innerHeight - 50) + 50) + "px";
-        scoreSpan.textContent++;
+        score++;
+        scoreText.textContent = `Score: ${score}`;
     };
 
     // Target image

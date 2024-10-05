@@ -3,8 +3,32 @@ body {
 }
 
 p {
+    padding: 10px;
     color: #ffffff;
     font-family: monospace;
     font-size: 30px;
     font-weight: bolder;
 }
+
+.target {
+    cursor: pointer
+}
+
+.target:hover {
+    transform: scale(1.05);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    padding: 10px;
+    background-color: #534e4e;
+    border: 2px solid grey;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
